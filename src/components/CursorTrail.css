@@ -1,0 +1,65 @@
+.cursor-trail-canvas {
+  position: fixed;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.cursor-trail-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px 2px var(--accent);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  will-change: transform;
+  transition: opacity 0.15s ease;
+}
+
+.cursor-trail-dot--hidden {
+  opacity: 0;
+}
+
+.cursor-trail-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 6px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.15s ease;
+  transform-origin: right top;
+}
+
+.cursor-trail-bubble--visible {
+  opacity: 1;
+}
+
+body.cursor-trail-active {
+  cursor: none;
+}
+
+@media (max-width: 720px), (hover: none) {
+  body.cursor-trail-active {
+    cursor: auto;
+  }
+  .cursor-trail-canvas,
+  .cursor-trail-dot,
+  .cursor-trail-bubble {
+    display: none;
+  }
+}
