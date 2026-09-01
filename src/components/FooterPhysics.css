@@ -1,0 +1,11 @@
+.footer-physics {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}
+
+.footer-physics canvas {
+  display: block;
+}
