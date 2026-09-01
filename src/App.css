@@ -384,6 +384,9 @@ footer .wrap a { color: var(--ink-soft); }
 footer .wrap a:hover { color: var(--ink); }
 .footer-links { display: flex; gap: 18px; }
 
+.site-footer { padding-top: 0; }
+.site-footer-line { justify-content: center; }
+
 @media (max-width: 720px) {
   footer .wrap { flex-direction: column; gap: 10px; text-align: center; }
 }

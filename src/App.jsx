@@ -1,13 +1,33 @@
 import { useEffect, useRef } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import CursorTrail from "./components/CursorTrail.jsx";
+import FooterPhysics from "./components/FooterPhysics.jsx";
 import CaseStudyRunbooks from "./work/runbooks/CaseStudyRunbooks.jsx";
 import "./App.css";
 import thumbnail from "./work/runbooks/assets/thumbnail.png";
 import runbookDemo from "./work/runbooks/assets/runbookDemo.mp4";
+import canvasWide from "./work/runbooks/assets/canvasWide.png";
+
 import linkedinIcon from "./assets/linkedin.svg";
 import zohoLogo from "./assets/zoho.svg";
 import superopsLogo from "./assets/SuperOps.svg";
+import figmaLogo from "./assets/tools/figma.svg";
+import framerLogo from "./assets/tools/framer.svg";
+import reactLogo from "./assets/tools/react.svg";
+import webflowLogo from "./assets/tools/webflow.svg";
+import notionLogo from "./assets/tools/notion.svg";
+import linearLogo from "./assets/tools/linear.svg";
+
+// EDIT: swap/add entries to match the "Tools" card above — each drops in,
+// settles, and scatters when you hover near it in the footer.
+const FOOTER_LOGOS = [
+  { url: figmaLogo, shape: "circle", size: 48, count: 2 },
+  { url: framerLogo, shape: "square", size: 44, count: 2 },
+  { url: reactLogo, shape: "circle", size: 46, count: 2 },
+  { url: webflowLogo, shape: "square", size: 44, count: 2 },
+  { url: notionLogo, shape: "circle", size: 44, count: 2 },
+  { url: linearLogo, shape: "square", size: 42, count: 2 },
+];
 
 /*
   QUICK EDIT GUIDE
@@ -164,10 +184,10 @@ function Home() {
 
           {/* META CARD — EDIT: experience, focus, location */}
           <div ref={registerCard} className="card card--meta span-2c span-1r">
-            <p className="eyebrow">Experience</p>
+            {/* <p className="eyebrow">Experience</p> */}
             <div className="meta-row">
               <div>
-                <div className="big">7 yrs</div>
+                <div className="big">7+ yrs</div>
                 <div className="value-sub">Experience</div>
               </div>
               <div className="label">Design &amp; development</div>
@@ -337,6 +357,13 @@ function Home() {
           </div>
         </div>
       </main>
+
+      <footer className="site-footer">
+        <FooterPhysics logos={FOOTER_LOGOS} />
+        <div className="wrap site-footer-line">
+          <span>© {year} · Built by hand</span>
+        </div>
+      </footer>
     </>
   );
 }
