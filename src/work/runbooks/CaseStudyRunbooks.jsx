@@ -56,6 +56,14 @@ export default function CaseStudyRunbooks() {
               </svg>
               Back to Profile
             </button>
+            <a
+              className="cs-live-link text-red-100"
+              href="https://superops.com/psa-software/unified-runbooks"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See announcement →
+            </a>
           </div>
         </div>
 

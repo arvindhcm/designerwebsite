@@ -1,52 +1,34 @@
+@reference "./index.css";
+
 .wrap {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 25px;
+  @apply mx-auto max-w-[1120px] p-[25px];
 }
 
 /* ---------- Top nav ---------- */
 header.site-nav {
-  padding: 50px 0;
+  @apply py-[50px];
 }
 .site-nav .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between;
 }
 .logo {
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @apply flex items-center gap-2 text-[15px] font-bold tracking-[-0.01em];
 }
 .logo .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent);
-  display: inline-block;
+  @apply inline-block size-2 rounded-full bg-accent;
 }
 nav.links {
-  display: flex;
-  gap: 28px;
-  font-size: 14px;
-  color: var(--ink-soft);
+  @apply flex gap-7 text-sm text-ink-soft;
 }
-nav.links a { transition: color .15s ease; }
-nav.links a:hover { color: var(--ink); }
+nav.links a { @apply transition-colors duration-150 ease-[ease]; }
+nav.links a:hover { @apply text-ink; }
 .nav-cta {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 9px 16px;
-  border-radius: 100px;
-  background: var(--ink);
-  color: var(--bg);
-  transition: transform .15s ease, opacity .15s ease;
+  @apply rounded-full bg-ink px-4 py-[9px] text-sm font-semibold text-bg transition-[transform,opacity] duration-150 ease-[ease];
 }
-.nav-cta:hover { transform: translateY(-1px); opacity: .92; }
+.nav-cta:hover { @apply -translate-y-px opacity-[.92]; }
 
 @media (max-width: 720px) {
-  nav.links { display: none; }
+  nav.links { @apply hidden; }
 }
 
 /* ---------- Bento grid ----------
@@ -56,157 +38,100 @@ nav.links a:hover { color: var(--ink); }
    If you lengthen a card's text and it starts crowding its
    button/last line, bump its row span up by one rather than
    shrinking the font. */
-main { padding: 28px 0 90px; }
+main { @apply pt-7 pb-[90px]; }
 
 .bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 160px;
-  grid-auto-flow: dense;
-  gap: var(--gap);
-  margin-top: 18px;
+  @apply mt-[18px] grid grid-cols-4 auto-rows-[160px] grid-flow-row-dense gap-4;
 }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  @apply relative flex flex-col rounded-lg border border-border bg-surface p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-200 ease-[ease];
 }
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--border-strong);
+  @apply -translate-y-[3px] border-border-strong shadow-md;
 }
 
 .eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 10px;
+  @apply m-0 mb-2.5 text-xs font-semibold uppercase tracking-[.06em] text-muted;
 }
 
 /* card spans — desktop */
-.span-1c { grid-column: span 1; }
-.span-2c { grid-column: span 2; }
-.span-3c { grid-column: span 3; }
-.span-4c { grid-column: span 4; }
-.span-1r { grid-row: span 1; }
-.span-2r { grid-row: span 2; }
+.span-1c { @apply col-span-1; }
+.span-2c { @apply col-span-2; }
+.span-3c { @apply col-span-3; }
+.span-4c { @apply col-span-4; }
+.span-1r { @apply row-span-1; }
+.span-2r { @apply row-span-2; }
 
 /* ---- Headline card ---- */
 .card--headline p:not(.eyebrow) {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-soft);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
-  line-clamp: 6;
-  overflow: hidden;
+  @apply m-0 line-clamp-6 overflow-hidden text-[15px] leading-[1.65] text-ink-soft;
 }
 
 /* ---- Profile card ---- */
-.card--profile { justify-content: space-between; background: var(--surface-alt); }
+.card--profile { @apply justify-between bg-surface-alt; }
 .avatar {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--tertiary));
-  color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 22px;
-  letter-spacing: -.02em;
-  box-shadow: var(--shadow-sm);
+  @apply flex size-16 items-center justify-center rounded-full bg-linear-to-br from-accent to-tertiary text-[22px] font-bold tracking-[-.02em] text-white shadow-sm;
 }
 .card--profile h1 {
-  font-size: 26px;
-  margin: 18px 0 2px;
-  letter-spacing: -0.02em;
+  @apply mx-0 mt-[18px] mb-0.5 text-[26px] tracking-[-0.02em];
 }
 .card--profile .role {
-  color: var(--muted);
-  font-size: 15px;
-  font-weight: 500;
+  @apply text-[15px] font-medium text-muted;
 }
 
 /* ---- Status badge ---- */
 .card--status {
-  justify-content: center;
-  align-items: flex-start;
-  background: var(--accent-soft);
-  border-color: var(--accent-soft-border);
+  @apply items-start justify-center bg-accent-soft border-accent-soft-border;
 }
 .status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent-ink);
+  @apply inline-flex items-center gap-2 text-[13px] font-semibold text-accent-ink;
 }
 .status-pill .pulse {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(92,107,69,.6);
-  animation: pulse 2s infinite;
+  @apply size-2 rounded-full bg-accent shadow-[0_0_0_0_rgba(92,107,69,.6)] [animation:pulse_2s_infinite];
 }
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(92,107,69,.45); }
   70% { box-shadow: 0 0 0 8px rgba(92,107,69,0); }
   100% { box-shadow: 0 0 0 0 rgba(92,107,69,0); }
 }
-.card--status .sub { margin-top: 10px; font-size: 13px; color: var(--ink-soft); }
+.card--status .sub { @apply mt-2.5 text-[13px] text-ink-soft; }
 
 /* ---- Tools card ---- */
-.card--tools { justify-content: flex-start; }
+.card--tools { @apply justify-start; }
 .tag-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
+  @apply mt-auto flex flex-wrap gap-2;
 }
 .tag {
-  font-size: 12.5px;
-  font-weight: 500;
-  padding: 7px 12px;
-  border-radius: 100px;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  color: var(--ink-soft);
+  @apply rounded-full border border-border bg-surface-alt px-3 py-[7px] text-[12.5px] font-medium text-ink-soft;
 }
-.card--tools h3 { margin: 0 0 4px; font-size: 17px; letter-spacing: -.01em; }
- .lede { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
+.card--tools h3 { @apply m-0 mb-1 text-[17px] tracking-[-.01em]; }
+.lede { @apply m-0 mb-4 text-[13.5px] text-muted; }
 
 /* ---- Experience card (Zoho / SuperOps) ---- */
-.card--experience { justify-content: center; gap: 16px; }
-.exp-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.exp-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-.exp-logo-img { height: 22px; width: auto; max-width: 110px; object-fit: contain; }
-.exp-label { font-size: 11.5px; font-weight: 600; color: var(--ink-soft); letter-spacing: -.01em; }
-.exp-years { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.card--experience { @apply justify-center gap-4; }
+.exp-row { @apply flex items-center justify-between gap-3; }
+.exp-brand { @apply flex flex-col items-start gap-1; }
+.exp-logo-img { @apply h-[22px] w-auto max-w-[110px] object-contain; }
+.exp-label { @apply text-[11.5px] font-semibold tracking-[-.01em] text-ink-soft; }
+.exp-years { @apply whitespace-nowrap text-[11.5px] text-muted; }
 
 /* ---- Location / experience card ---- */
-.card--meta { justify-content: space-between; background: var(--surface-alt); padding: 16px 28px; }
-.meta-row { display: flex; justify-content: space-between; align-items: baseline; }
-.meta-row + .meta-row { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
-.meta-row .big { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
-.meta-row .label { font-size: 12.5px; color: var(--muted); text-align: right; }
-.meta-row .value-sub { color: var(--muted); font-size: 13px; }
+.card--meta { @apply justify-between bg-surface-alt px-7 py-4; }
+.meta-row { @apply flex items-baseline justify-between; }
+.meta-row + .meta-row { @apply mt-1.5 border-t border-border pt-1.5; }
+.meta-row .big { @apply text-xl font-bold tracking-[-.01em]; }
+.meta-row .label { @apply text-right text-[12.5px] text-muted; }
+.meta-row .value-sub { @apply text-[13px] text-muted; }
+
+/* ---- Hobbies card ---- */
+.card--hobbies { @apply justify-center gap-2.5; }
+.card--hobbies .tag-grid { @apply mt-0; }
+.card--hobbies .tag { @apply inline-flex items-center gap-1.5; }
 
 /* ---- Work cards ---- */
 .card--work {
-  justify-content: flex-end;
-
-  border: none;
-  overflow: hidden;
+  @apply justify-end overflow-hidden border-none;
 }
 .card--work.alt {
   background:
@@ -222,21 +147,15 @@ main { padding: 28px 0 90px; }
 }
 .card--work.work-mint::before,
 .card--work.work-sky::before {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='saturate' values='0' result='g'/%3E%3CfeComponentTransfer in='g'%3E%3CfeFuncA type='linear' slope='2.2' intercept='-0.55'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 120px 120px;
-  opacity: .5;
-  mix-blend-mode: overlay;
-  pointer-events: none;
+  @apply pointer-events-none absolute inset-0 opacity-50 mix-blend-overlay content-[''];
 }
 .card--work.work-mint .work-tag {
-  background: rgba(20,35,40,.08);
-  color: #1c2a2a;
+  @apply bg-[rgba(20,35,40,.08)] text-[#1c2a2a];
 }
-.card--work.work-mint h3 { color: #172223; }
-.card--work.work-mint p { color: rgba(23,34,35,.7); }
+.card--work.work-mint h3 { @apply text-[#172223]; }
+.card--work.work-mint p { @apply text-[rgba(23,34,35,.7)]; }
 
 .card--work.work-sky {
   background:
@@ -245,160 +164,104 @@ main { padding: 28px 0 90px; }
     linear-gradient(160deg, #d3ddec 0%, #a5b8d2 40%, #7c92b3 72%, #5f7594 100%);
 }
 .card--work.work-sky .work-tag {
-  background: rgba(20,30,45,.14);
-  color: #1c2740;
+  @apply bg-[rgba(20,30,45,.14)] text-[#1c2740];
 }
-.card--work.work-sky h3 { color: #1a2438; }
-.card--work.work-sky p { color: rgba(24,32,50,.72); }
+.card--work.work-sky h3 { @apply text-[#1a2438]; }
+.card--work.work-sky p { @apply text-[rgba(24,32,50,.72)]; }
 .work-tag {
-  align-self: flex-start;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 100px;
-  background: rgba(255,255,255,.16);
-  backdrop-filter: blur(6px);
+  @apply self-start rounded-full bg-[rgba(255,255,255,.16)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[.04em] backdrop-blur-[6px];
 }
 .card--work h3 {
-  font-size: 21px;
-  margin: 0 0 4px;
-  letter-spacing: -0.01em;
+  @apply m-0 mb-1 text-[21px] tracking-[-0.01em];
 }
-.card--work p { margin: 0; font-size: 13.5px; color: rgba(255,255,255,.75); }
+.card--work p { @apply m-0 text-[13.5px] text-[rgba(255,255,255,.75)]; }
 /* Sits in the flexible gap between the tag and the heading, so it
    scales with the card instead of floating over the text. */
-.card--clickable { cursor: none; }
+.card--clickable { @apply cursor-none; }
 .card--clickable:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  @apply outline outline-2 outline-offset-2 outline-accent;
 }
 .work-placeholder-note {
-  flex: 1;
-  display: flex; align-items: center; justify-content: center;
-  min-height: 20px;
-  margin: 12px 0;
-  text-align: center;
-  font-size: 12px; color: rgba(255,255,255,.35);
-  pointer-events: none;
+  @apply pointer-events-none my-3 flex min-h-5 flex-1 items-center justify-center text-center text-xs text-[rgba(255,255,255,.35)];
 }
 /* Same flexible gap as .work-placeholder-note, without the label —
    use on work cards that don't need a swap-me hint. */
-.work-spacer { flex: 1; min-height: 12px; }
+.work-spacer { @apply min-h-3 flex-1; }
 .work-featured {
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  gap: 24px;
-  padding: 20px;
+  @apply flex-row items-stretch justify-start gap-6 p-5;
 }
 .work-left {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 50%;
-  min-width: 0;
+  @apply flex min-w-0 flex-col [flex:1_1_50%];
 }
 .work-thumb {
-  flex: 0 0 50%;
-  width: 50%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-      padding: 28px;
-    background: #E8DBFD;
+  @apply h-full w-1/2 rounded-xl bg-[#E8DBFD] object-contain p-7 [flex:0_0_50%];
 }
 
 /* ---- About card ---- */
-.card--about h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.01em; }
-.card--about p { margin: 0; color: var(--ink-soft); font-size: 14.5px; line-height: 1.7; }
+.card--about h3 { @apply m-0 mb-2.5 text-lg tracking-[-.01em]; }
+.card--about p { @apply m-0 text-[14.5px] leading-[1.7] text-ink-soft; }
 
 /* ---- Contact card ---- */
 .card--contact {
-  justify-content: center;
-  background: var(--surface-alt);
+  @apply justify-center bg-surface-alt;
 }
 .card--contact h3 {
-  font-size: 24px;
-  margin: 0 0 8px;
-  letter-spacing: -.01em;
+  @apply m-0 mb-2 text-2xl tracking-[-.01em];
 }
-.card--contact p { margin: 0 0 18px; color: var(--ink-soft); font-size: 14.5px; }
+.card--contact p { @apply mx-0 mt-0 mb-[18px] text-[14.5px] text-ink-soft; }
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  align-self: flex-start;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 20px;
-  border-radius: 100px;
-  background: var(--ink);
-  color: var(--bg);
-  transition: transform .15s ease, opacity .15s ease;
+  @apply inline-flex items-center gap-2 self-start rounded-full bg-ink px-5 py-3 text-sm font-semibold text-bg transition-[transform,opacity] duration-150 ease-[ease];
 }
-.btn:hover { transform: translateY(-1px); opacity: .92; }
-.btn svg { width: 14px; height: 14px; }
+.btn:hover { @apply -translate-y-px opacity-[.92]; }
+.btn svg { @apply size-3.5; }
 
 /* ---- Socials card ---- */
-.card--socials { justify-content: space-between; }
-.social-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.card--socials { @apply justify-between; }
+.social-list { @apply mt-3 flex flex-col gap-2.5; }
 .social-list a {
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 14px; font-weight: 500; color: var(--ink-soft);
-  padding: 10px 4px;
-  border-bottom: 1px solid var(--border);
-  transition: color .15s ease, padding-left .15s ease;
+  @apply flex items-center justify-between border-b border-border px-1 py-2.5 text-sm font-medium text-ink-soft transition-[color,padding-left] duration-150 ease-[ease];
 }
-.social-list a:last-child { border-bottom: none; }
-.social-label { display: flex; align-items: center; gap: 8px; }
-.social-icon { width: 16px; height: 16px; }
-.social-list a:hover { color: var(--ink); padding-left: 6px; }
-.social-list a span.arrow { opacity: .4; transition: opacity .15s ease, transform .15s ease; }
-.social-list a:hover span.arrow { opacity: 1; transform: translateX(2px); }
+.social-list a:last-child { @apply border-b-0; }
+.social-label { @apply flex items-center gap-2; }
+.social-icon { @apply size-4; }
+.social-list a:hover { @apply pl-1.5 text-ink; }
+.social-list a span.arrow { @apply opacity-40 transition-[opacity,transform] duration-150 ease-[ease]; }
+.social-list a:hover span.arrow { @apply translate-x-0.5 opacity-100; }
 
 /* ---------- Reveal animation ---------- */
 .card {
-  opacity: 0;
-  transform: translateY(14px);
+  @apply translate-y-[14px] opacity-0;
 }
 .card.in-view {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .5s ease, transform .5s ease, box-shadow .2s ease, border-color .2s ease;
+  @apply translate-y-0 opacity-100 [transition:opacity_.5s_ease,transform_.5s_ease,box-shadow_.2s_ease,border-color_.2s_ease];
 }
 
 /* ---------- Footer ---------- */
 footer {
-  border-top: 1px solid var(--border);
-  padding: 26px 0 40px;
+  @apply border-t border-border pt-[26px] pb-10;
 }
 footer .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: var(--muted);
+  @apply flex items-center justify-between text-[13px] text-muted;
 }
-footer .wrap a { color: var(--ink-soft); }
-footer .wrap a:hover { color: var(--ink); }
-.footer-links { display: flex; gap: 18px; }
+footer .wrap a { @apply text-ink-soft; }
+footer .wrap a:hover { @apply text-ink; }
+.footer-links { @apply flex gap-[18px]; }
 
-.site-footer { padding-top: 0; }
-.site-footer-line { justify-content: center; }
+.site-footer { @apply pt-0; }
+.site-footer-line { @apply justify-center; }
 
 @media (max-width: 720px) {
-  footer .wrap { flex-direction: column; gap: 10px; text-align: center; }
+  footer .wrap { @apply flex-col gap-2.5 text-center; }
 }
 
 /* ---------- Responsive grid ---------- */
 @media (max-width: 860px) {
-  .bento { grid-template-columns: repeat(2, 1fr); }
-  .span-3c { grid-column: span 2; }
-  .span-4c { grid-column: span 2; }
+  .bento { @apply grid-cols-2; }
+  .span-3c { @apply col-span-2; }
+  .span-4c { @apply col-span-2; }
 }
 @media (max-width: 560px) {
-  .bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
-  .card { grid-column: span 1 !important; grid-row: span 1 !important; min-height: 160px; }
-  .site-nav { padding-top: 20px; }
+  .bento { @apply grid-cols-1 auto-rows-auto; }
+  .card { @apply !col-span-1 !row-span-1 min-h-[160px]; }
+  .site-nav { @apply pt-5; }
 }

@@ -15,12 +15,34 @@
   --accent-soft: #FFE9D6;
   --accent-soft-border: rgba(255, 142, 60, 0.28);
   --tertiary: #D9376E;
-  --shadow-sm: 0 1px 2px rgba(13, 13, 13, 0.05);
-  --shadow-md: 0 16px 40px -20px rgba(13, 13, 13, 0.28);
+  --gap: 16px;
+}
+
+/* Registers the palette above as Tailwind theme tokens (bg-ink, text-accent,
+   border-border, rounded-lg, shadow-md, …) without renaming the variables
+   other stylesheets (CursorTrail.css, CaseStudyRunbooks.css) already read
+   directly via var(--accent) etc. */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-border: var(--accent-soft-border);
+  --color-tertiary: var(--tertiary);
+
   --radius-lg: 28px;
   --radius-md: 20px;
   --radius-sm: 14px;
-  --gap: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(13, 13, 13, 0.05);
+  --shadow-md: 0 16px 40px -20px rgba(13, 13, 13, 0.28);
 }
 
 * { box-sizing: border-box; }

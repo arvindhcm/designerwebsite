@@ -82,18 +82,19 @@ function Home() {
 
   return (
     <>
-      {/* <header className="site-nav">
+      <header className="site-nav">
         <div className="wrap">
-          <div className="logo">
-          </div>
+          <div className="logo"></div>
           <nav className="links">
             <a href="#work1">Work</a>
-            <a href="#about">About</a>
+            <a id="aboutpagelink" href="#about">
+              About
+            </a>
             <a href="#contact">Contact</a>
           </nav>
           <div></div>
         </div>
-      </header> */}
+      </header>
 
       <main className="wrap">
         <div className="bento">
@@ -111,12 +112,11 @@ function Home() {
             </div>
 
             <p className="lede">
-              I’m Jona, a UX designer with 7 years of experience on complex,
-              enterprise-scale products. I specialize in end-to-end design, from
-              research to implementation, and collaborate closely with
-              cross-functional teams to deliver user-centered solutions. I’m
-              passionate about AI and exploring how Designer-AI collaboration
-              can become more effective and trustworthy.
+              I’m a product designer who loves crafting calm, clear experiences
+              that users love and teams trust. I design with a systems mindset
+              simplifying complex workflows, elevating visual clarity, and
+              shaping products that scale with intention. Currently at Superops,
+              designing AI native ticketing platform. Previously at Zoho.
             </p>
           </div>
 
@@ -139,7 +139,7 @@ function Home() {
           {/* STATUS CARD — EDIT: toggle wording / remove if unavailable */}
           <div
             ref={registerCard}
-            className="card card--experience span-1c span-1r"
+            className="card card--experience span-2c span-1r"
           >
             <p className="eyebrow">Experience</p>
             <div className="exp-row">
@@ -174,28 +174,31 @@ function Home() {
             <p className="lede">Design, code, and everything in between</p>
             <div className="tag-grid">
               <span className="tag">Figma</span>
-              <span className="tag">Framer</span>
               <span className="tag">React</span>
-              <span className="tag">Webflow</span>
-              <span className="tag">Notion</span>
               <span className="tag">Linear</span>
+              <span className="tag">Claude</span>
             </div>
           </div>
 
           {/* META CARD — EDIT: experience, focus, location */}
-          <div ref={registerCard} className="card card--meta span-2c span-1r">
+          <div ref={registerCard} className="card card--meta span-1c span-1r">
             {/* <p className="eyebrow">Experience</p> */}
             <div className="meta-row">
               <div>
-                <div className="big">7+ yrs</div>
-                <div className="value-sub">Experience</div>
+                <h2
+                  className="font-medium
+"
+                >
+                  7+yrs
+                </h2>
+                <div className="value-sub">⏳ Exp</div>
               </div>
               <div className="label">Design &amp; development</div>
             </div>
             <div className="meta-row">
               <div>
-                <div className="big">Chennai</div>
-                <div className="value-sub">Location</div>
+                <h2 className="font-medium">Chennai</h2>
+                <div className="value-sub ">📍Location</div>
               </div>
               <div className="label">India</div>
             </div>
@@ -219,7 +222,7 @@ function Home() {
             }
           >
             <div className="work-left">
-              <span className="work-tag">Case study #1</span>
+              <span className="work-tag">2024 - 2025</span>
               <div className="work-spacer"></div>
               <div className="work-copy">
                 <h3>Unified Runbooks — SuperOps PSA</h3>
@@ -260,7 +263,7 @@ function Home() {
             }
           >
             <div className="work-left">
-              <span className="work-tag">Case study #2</span>
+              <span className="work-tag">2023</span>
               <div className="work-spacer"></div>
               <div className="work-copy">
                 <h3>Unified Runbooks — SuperOps PSA</h3>
@@ -290,15 +293,13 @@ function Home() {
           <div
             id="about"
             ref={registerCard}
-            className="card card--about span-2c span-2r"
+            className="card card--about span-1c span-2r flex justify-between"
           >
-            <p className="eyebrow">About</p>
-            <h3>The story so far</h3>
-            <p>
-              A couple of sentences on how you approach a project, what you
-              value, and what led you here. Keep it short — this card rewards
-              restraint.
-            </p>
+            <div>
+              {/* <p className="eyebrow">About</p> */}
+              <h3>The story so far</h3>
+            </div>
+            <p>Reliable clkjsdbnclkjnsad clkjcnsdlkjcn lkjnclskdjnclkjnsda </p>
           </div>
 
           {/* CONTACT CARD — EDIT: email address / CTA copy */}
@@ -324,10 +325,26 @@ function Home() {
             </a>
           </div>
 
+          {/* HOBBIES CARD — EDIT: what you get up to outside of design */}
+          <div
+            ref={registerCard}
+            className="card card--hobbies span-1c span-1r"
+          >
+            <p className="eyebrow">Off the clock</p>
+            <div className="tag-grid">
+              <span className="tag">
+                <span aria-hidden="true">⚽</span> Football
+              </span>
+              <span className="tag">
+                <span aria-hidden="true">🏔️</span> Mountain drives
+              </span>
+            </div>
+          </div>
+
           {/* SOCIALS CARD — EDIT: your real profile links.
               Sized at span-2r so the last link keeps its bottom padding;
               it has enough headroom for a 3rd link without growing further. */}
-          <div ref={registerCard} className="card card--socials ">
+          <div ref={registerCard} className="card card--socials span-2r">
             <p className="eyebrow">Find me</p>
             <div className="social-list">
               {/* <a
@@ -352,6 +369,12 @@ function Home() {
                   LinkedIn
                 </span>
                 <span className="arrow">→</span>
+              </a>
+              <a href="tel:+916384769554">
+                ☎️ +91 6384769554 <span className="arrow">→</span>
+              </a>
+              <a href="mailto:arvindhcm7@gmail.com">
+                📧 arvindhcm7@gmail <span className="arrow">→</span>
               </a>
             </div>
           </div>
