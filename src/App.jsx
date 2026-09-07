@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import CursorTrail from "./components/CursorTrail.jsx";
 import FooterPhysics from "./components/FooterPhysics.jsx";
+import Cover from "./components/Cover.jsx";
+import profilePic from "./components/assets/myprofilepic.jpeg";
 import CaseStudyRunbooks from "./work/runbooks/CaseStudyRunbooks.jsx";
 import "./App.css";
 import thumbnail from "./work/runbooks/assets/thumbnail.png";
@@ -17,6 +19,13 @@ import reactLogo from "./assets/tools/react.svg";
 import webflowLogo from "./assets/tools/webflow.svg";
 import notionLogo from "./assets/tools/notion.svg";
 import linearLogo from "./assets/tools/linear.svg";
+import claudeLogo from "./assets/tools/claude.svg";
+import claudeCodeLogo from "./assets/tools/claudecode.svg";
+import htmlLogo from "./assets/tools/html5.svg";
+import cssLogo from "./assets/tools/css3.svg";
+import sassLogo from "./assets/tools/sass.svg";
+import jsLogo from "./assets/tools/javascript.svg";
+import githubLogo from "./assets/tools/github.svg";
 
 // EDIT: swap/add entries to match the "Tools" card above — each drops in,
 // settles, and scatters when you hover near it in the footer.
@@ -27,6 +36,13 @@ const FOOTER_LOGOS = [
   { url: webflowLogo, shape: "square", size: 44, count: 2 },
   { url: notionLogo, shape: "circle", size: 44, count: 2 },
   { url: linearLogo, shape: "square", size: 42, count: 2 },
+  { url: claudeLogo, shape: "circle", size: 46, count: 2 },
+  { url: claudeCodeLogo, shape: "square", size: 44, count: 2 },
+  { url: htmlLogo, shape: "circle", size: 44, count: 2 },
+  { url: cssLogo, shape: "circle", size: 44, count: 2 },
+  { url: sassLogo, shape: "square", size: 42, count: 2 },
+  { url: jsLogo, shape: "square", size: 44, count: 2 },
+  { url: githubLogo, shape: "circle", size: 46, count: 2 },
 ];
 
 /*
@@ -96,6 +112,8 @@ function Home() {
         </div>
       </header>
 
+      {/* <Cover /> */}
+
       <main className="wrap">
         <div className="bento">
           {/* PROFILE CARD — EDIT: your name, role, initials */}
@@ -104,10 +122,14 @@ function Home() {
             className="card card--profile span-2c span-2r"
           >
             <div className="flex items-center">
-              <div className="avatar mt-5">YN</div>
+              <img
+                src={profilePic}
+                alt="Arvindh C M"
+                className="avatar mt-5 size-16 rounded-full object-cover"
+              />
               <div className="ml-3">
-                <h1>Your Name</h1>
-                <div className="role">Product Designer</div>
+                <h1>Arvindh C M</h1>
+                <div className="role">Product Designer / UX Engineer</div>
               </div>
             </div>
 
@@ -175,8 +197,12 @@ function Home() {
             <div className="tag-grid">
               <span className="tag">Figma</span>
               <span className="tag">React</span>
+              <span className="tag">Html5</span>
+              <span className="tag">css</span>
+              <span className="tag">sass</span>
               <span className="tag">Linear</span>
-              <span className="tag">Claude</span>
+              <span className="tag">Claude Design</span>
+              <span className="tag">Claude Code</span>
             </div>
           </div>
 
@@ -249,7 +275,7 @@ function Home() {
           </div>
 
           {/* WORK — secondary piece. EDIT as above. */}
-          <div
+          {/* <div
             id="work2"
             ref={registerCard}
             className="card card--work work-sky work-featured span-3c span-2r card--clickable"
@@ -280,26 +306,34 @@ function Home() {
               loop
               muted
               playsInline
-            />
-            {/* <img
+            /> */}
+          {/* <img
               className="work-thumb"
               src={thumbnail}
               alt="Close-up of the runbook canvas with checklist and script nodes"
               loading="lazy"
             /> */}
-          </div>
+          {/* </div> */}
 
           {/* ABOUT CARD — EDIT: your story */}
           <div
             id="about"
             ref={registerCard}
-            className="card card--about span-1c span-2r flex justify-between"
+            className="card card--about span-3c span-2r flex justify-between"
           >
             <div>
               {/* <p className="eyebrow">About</p> */}
               <h3>The story so far</h3>
             </div>
-            <p>Reliable clkjsdbnclkjnsad clkjcnsdlkjcn lkjnclskdjnclkjnsda </p>
+            <p>
+              Started out untangling complex ETL workflows and SQL editors at
+              Zoho , learning that good design is really about making hard
+              things feel obvious. That systems thinking followed me to
+              SuperOps, where I've spent the last two years building an
+              AI-native ticketing platform from scratch. Somewhere between
+              shipping Runbooks and chasing state sync bugs, I found the kind of
+              work I actually want to keep doing.{" "}
+            </p>
           </div>
 
           {/* CONTACT CARD — EDIT: email address / CTA copy */}
@@ -335,6 +369,9 @@ function Home() {
               <span className="tag">
                 <span aria-hidden="true">⚽</span> Football
               </span>
+              {/* <span className="tag">
+                <span aria-hidden="true">🎾</span> Football
+              </span> */}
               <span className="tag">
                 <span aria-hidden="true">🏔️</span> Mountain drives
               </span>
@@ -383,9 +420,9 @@ function Home() {
 
       <footer className="site-footer">
         <FooterPhysics logos={FOOTER_LOGOS} />
-        <div className="wrap site-footer-line">
+        {/* <div className="wrap site-footer-line">
           <span>© {year} · Built by hand</span>
-        </div>
+        </div> */}
       </footer>
     </>
   );
