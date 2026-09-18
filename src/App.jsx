@@ -237,7 +237,7 @@ function Home() {
           <div
             id="work1"
             ref={registerCard}
-            className="card card--work work-mint work-featured span-3c span-2r card--clickable"
+            className="card card--work work-mint work-featured span-4c span-2r card--clickable"
             role="button"
             tabIndex={0}
             data-cursor-label="Show details"

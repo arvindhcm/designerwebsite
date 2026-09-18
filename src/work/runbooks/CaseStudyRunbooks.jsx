@@ -40,7 +40,7 @@ export default function CaseStudyRunbooks() {
     >
       <div className="cs-scroll">
         {/* TOPBAR */}
-        <div className="cs-topbar">
+        <div className="liquid-glass cs-topbar">
           <div className="wrap cs-topbar-inner">
             <button className="cs-back" onClick={() => navigate("/")}>
               <svg
@@ -99,7 +99,7 @@ export default function CaseStudyRunbooks() {
         </header>
 
         <div className="wrap">
-          <div className="cs-hero-media w-3/4">
+          <div className="cs-hero-media w-3/5">
             <video src={runbookDemo} autoPlay loop muted playsInline />
           </div>
         </div>
@@ -169,7 +169,7 @@ export default function CaseStudyRunbooks() {
 
         {/* PROCESS */}
         <section className="cs-section cs-section--alt">
-          <div className="wrap cs-section-inner">
+          <div className="wrap">
             <p className="eyebrow">Process</p>
             <h2>Designing the node, not just the screen</h2>
             <p className="cs-body">
