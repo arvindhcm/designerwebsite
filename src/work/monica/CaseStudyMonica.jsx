@@ -278,7 +278,7 @@ export default function CaseStudyMonica() {
               its own visual language, so technicians always know which mode
               they're in.
             </p>
-            <div className="mt-7 grid grid-cols-1 gap-5 md:grid-cols-3">
+            <div className="mt-7 grid grid-cols-1 gap-5 md:grid-cols-2">
               {processTiers.map((tier) => (
                 <figure
                   key={tier.title}

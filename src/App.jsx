@@ -262,12 +262,13 @@ function Home() {
               </div>
             </div>
             <video
-              className="w-3/5"
+              className="w-1/2 p-8"
               src={runbookDemo}
               autoPlay
               loop
               muted
               playsInline
+              // style={{ padding: "30px" }}
             />
             {/* <img
               className="work-thumb"
