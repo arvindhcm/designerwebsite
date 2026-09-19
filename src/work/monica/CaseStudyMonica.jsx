@@ -13,6 +13,7 @@ import efficiencyReport from "./assets/efficiencyReport.gif";
 import scriptGeneration from "./assets/scriptGeneration.gif";
 import alloptionmonica from "./assets/alloptionmonica.png";
 import similarTicket from "./assets/similarticket.mp4";
+import samGodfrey from "./assets/samGodfrey.webp";
 
 const solutionFeatures = [
   {
