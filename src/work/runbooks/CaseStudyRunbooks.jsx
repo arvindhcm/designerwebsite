@@ -376,7 +376,7 @@ export default function CaseStudyRunbooks() {
         </section>
 
         {/* DECK / CLOSE */}
-        {/* <section className="cs-section cs-section--closing">
+        <section className="cs-section cs-section--closing">
           <div className="wrap cs-section-inner cs-closing-inner">
             <div>
               <h2>Want the full process?</h2>
@@ -410,7 +410,7 @@ export default function CaseStudyRunbooks() {
               </button>
             </div>
           </div>
-        </section> */}
+        </section>
       </div>
     </div>
   );

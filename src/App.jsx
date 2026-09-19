@@ -5,10 +5,12 @@ import FooterPhysics from "./components/FooterPhysics.jsx";
 import Cover from "./components/Cover.jsx";
 import profilePic from "./components/assets/myprofilepic.jpeg";
 import CaseStudyRunbooks from "./work/runbooks/CaseStudyRunbooks.jsx";
+import CaseStudyMonica from "./work/monica/CaseStudyMonica.jsx";
 import "./App.css";
 import thumbnail from "./work/runbooks/assets/thumbnail.png";
 import runbookDemo from "./work/runbooks/assets/runbookDemo.mp4";
 import canvasWide from "./work/runbooks/assets/canvasWide.png";
+import similarTicket from "./work/monica/assets/similarticket.mp4";
 
 import linkedinIcon from "./assets/linkedin.svg";
 import zohoLogo from "./assets/zoho.svg";
@@ -60,6 +62,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work/unified-runbooks" element={<CaseStudyRunbooks />} />
+        <Route path="/work/monica-ai" element={<CaseStudyMonica />} />
       </Routes>
     </>
   );
@@ -275,45 +278,45 @@ function Home() {
           </div>
 
           {/* WORK — secondary piece. EDIT as above. */}
-          {/* <div
+          <div
             id="work2"
             ref={registerCard}
-            className="card card--work work-sky work-featured span-3c span-2r card--clickable"
+            className="card card--work work-sky work-featured span-4c span-2r card--clickable"
             role="button"
             tabIndex={0}
             data-cursor-label="Show details"
-            onClick={() => navigate("/work/unified-runbooks")}
+            onClick={() => navigate("/work/monica-ai")}
             onKeyDown={(e) =>
               (e.key === "Enter" || e.key === " ") &&
-              navigate("/work/unified-runbooks")
+              navigate("/work/monica-ai")
             }
           >
             <div className="work-left">
-              <span className="work-tag">2023</span>
+              <span className="work-tag">2025</span>
               <div className="work-spacer"></div>
               <div className="work-copy">
-                <h3>Unified Runbooks — SuperOps PSA</h3>
+                <h3>Monica AI — SuperOps</h3>
                 <p>
-                  Turning SOPs into guided, automated workflows. Click to read
-                  the case study.
+                  Designing trust into an AI that gets to act on its own. Click
+                  to read the case study.
                 </p>
               </div>
             </div>
             <video
               className="w-3/5"
-              src={runbookDemo}
+              src={similarTicket}
               autoPlay
               loop
               muted
               playsInline
-            /> */}
-          {/* <img
-              className="work-thumb"
-              src={thumbnail}
-              alt="Close-up of the runbook canvas with checklist and script nodes"
+            />
+            {/* <img
+              className="w-3/5 object-cover"
+              // src={monicaHero}
+              alt="Monica AI product walkthrough inside the SuperOps console"
               loading="lazy"
             /> */}
-          {/* </div> */}
+          </div>
 
           {/* ABOUT CARD — EDIT: your story */}
           <div
