@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ImageLightbox from "./ImageLightbox";
+import ImageLightbox from "../../components/ImageLightbox";
 
 // import heroPoster from "./assets/videoThumbnail.webp";
 import scriptgen from "./assets/scriptgen.png";

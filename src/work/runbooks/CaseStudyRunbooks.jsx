@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CaseStudyRunbooks.css";
+
+import ImageLightbox from "../../components/ImageLightbox";
 
 import runbookDemo from "./assets/runbookDemo.mp4";
 import consistentService from "./assets/consistentService.mp4";
@@ -16,20 +18,64 @@ import testimonial2 from "./assets/customersatisfaction/testimonial2.png";
 import testimonial3 from "./assets/customersatisfaction/testimonial3.png";
 import testimonial4 from "./assets/customersatisfaction/testimonial4.png";
 
+const solutionMedia = [
+  {
+    src: canvasWide,
+    alt: "Runbook canvas showing an Employee Onboarding workflow with chained task, script, and system-action nodes",
+    caption:
+      "An Employee Onboarding runbook — task, script, and auto-action nodes chained with unlock logic.",
+    variant: "main",
+  },
+  {
+    src: canvasOnboarding,
+    alt: "Close-up of the runbook canvas with checklist and script nodes",
+    caption: "Close-up: checklist and script nodes mid-run.",
+    variant: "side",
+  },
+  {
+    src: listView,
+    alt: "List view of runbooks for quick scanning and management",
+    caption: "List view — for scanning and managing runbooks at a glance.",
+    variant: "side",
+  },
+  {
+    src: consistentService,
+    type: "video",
+    alt: "Consistent service experience demo, the same runbook running the same way across clients",
+    caption:
+      "Consistent service experiences — the same runbook, every time, across every client.",
+    variant: "side",
+  },
+  {
+    src: completeAdherence,
+    type: "video",
+    alt: "Complete adherence demo, runbook steps unlocking one after another in sequence",
+    caption:
+      "Ensure complete adherence — steps unlock in sequence, so nothing gets skipped.",
+    variant: "side",
+  },
+];
+
 // EDIT: swap copy, links, and credits for your own version of this story.
 export default function CaseStudyRunbooks() {
   const navigate = useNavigate();
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   useEffect(() => {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const onKey = (e) => e.key === "Escape" && navigate("/");
-    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", onKey);
     };
-  }, [navigate]);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape" && !lightboxImage) navigate("/");
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [navigate, lightboxImage]);
 
   return (
     <div
@@ -244,78 +290,64 @@ export default function CaseStudyRunbooks() {
               nothing skippable, nothing out of order.
             </p>
             <div className="cs-solution-layout">
-              <figure className="cs-figure cs-solution-main">
-                <div className="cs-solution-media">
-                  <img
-                    src={canvasWide}
-                    alt="Runbook canvas showing an Employee Onboarding workflow with chained task, script, and system-action nodes"
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption>
-                  An Employee Onboarding runbook — task, script, and auto-action
-                  nodes chained with unlock logic.
-                </figcaption>
-              </figure>
+              {solutionMedia
+                .filter((media) => media.variant === "main")
+                .map((media) => (
+                  <figure key={media.src} className="cs-figure cs-solution-main">
+                    <button
+                      type="button"
+                      className="cs-solution-media cursor-zoom-in appearance-none border-0 p-0 transition-opacity duration-150 ease-in-out hover:opacity-90"
+                      onClick={() =>
+                        setLightboxImage({
+                          src: media.src,
+                          alt: media.alt,
+                          type: media.type,
+                        })
+                      }
+                      aria-label={`Open full preview of ${media.alt}`}
+                    >
+                      {media.type === "video" ? (
+                        <video src={media.src} autoPlay loop muted playsInline />
+                      ) : (
+                        <img src={media.src} alt={media.alt} loading="lazy" />
+                      )}
+                    </button>
+                    <figcaption>{media.caption}</figcaption>
+                  </figure>
+                ))}
 
               <div className="cs-solution-side">
-                <figure className="cs-figure">
-                  <div className="cs-solution-media">
-                    <img
-                      src={canvasOnboarding}
-                      alt="Close-up of the runbook canvas with checklist and script nodes"
-                      loading="lazy"
-                    />
-                  </div>
-                  <figcaption>
-                    Close-up: checklist and script nodes mid-run.
-                  </figcaption>
-                </figure>
-
-                <figure className="cs-figure">
-                  <div className="cs-solution-media">
-                    <img
-                      src={listView}
-                      alt="List view of runbooks for quick scanning and management"
-                      loading="lazy"
-                    />
-                  </div>
-                  <figcaption>
-                    List view — for scanning and managing runbooks at a glance.
-                  </figcaption>
-                </figure>
-
-                <figure className="cs-figure">
-                  <div className="cs-solution-media">
-                    <video
-                      src={consistentService}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <figcaption>
-                    Consistent service experiences — the same runbook, every
-                    time, across every client.
-                  </figcaption>
-                </figure>
-
-                <figure className="cs-figure">
-                  <div className="cs-solution-media">
-                    <video
-                      src={completeAdherence}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <figcaption>
-                    Ensure complete adherence — steps unlock in sequence, so
-                    nothing gets skipped.
-                  </figcaption>
-                </figure>
+                {solutionMedia
+                  .filter((media) => media.variant === "side")
+                  .map((media) => (
+                    <figure key={media.src} className="cs-figure">
+                      <button
+                        type="button"
+                        className="cs-solution-media cursor-zoom-in appearance-none border-0 p-0 transition-opacity duration-150 ease-in-out hover:opacity-90"
+                        onClick={() =>
+                          setLightboxImage({
+                            src: media.src,
+                            alt: media.alt,
+                            type: media.type,
+                          })
+                        }
+                        aria-label={`Open full preview of ${media.alt}`}
+                      >
+                        {media.type === "video" ? (
+                          <video
+                            src={media.src}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                          />
+                        ) : (
+                          <img src={media.src} alt={media.alt} loading="lazy" />
+                        )}
+                      </button>
+                      <figcaption>{media.caption}</figcaption>
+                    </figure>
+                  ))}
               </div>
             </div>
           </div>
@@ -412,6 +444,15 @@ export default function CaseStudyRunbooks() {
           </div>
         </section>
       </div>
+
+      {lightboxImage && (
+        <ImageLightbox
+          src={lightboxImage.src}
+          alt={lightboxImage.alt}
+          type={lightboxImage.type}
+          onClose={() => setLightboxImage(null)}
+        />
+      )}
     </div>
   );
 }
