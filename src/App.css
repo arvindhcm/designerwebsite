@@ -199,7 +199,6 @@ main { @apply pt-7 pb-[90px]; }
 
 /* ---- About card ---- */
 .card--about h3 { @apply m-0 mb-2.5 text-lg tracking-[-.01em]; }
-.card--about p { @apply m-0 text-[14.5px] leading-[1.7] text-ink-soft; }
 
 /* ---- Contact card ---- */
 .card--contact {

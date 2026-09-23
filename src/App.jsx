@@ -3,6 +3,9 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import CursorTrail from "./components/CursorTrail.jsx";
 import FooterPhysics from "./components/FooterPhysics.jsx";
 import Cover from "./components/Cover.jsx";
+import Dock from "./components/Dock.jsx";
+import DockIcon from "./components/DockIcon.jsx";
+import { Highlighter } from "@/components/ui/highlighter";
 import profilePic from "./components/assets/myprofilepic.jpeg";
 import CaseStudyRunbooks from "./work/runbooks/CaseStudyRunbooks.jsx";
 import CaseStudyMonica from "./work/monica/CaseStudyMonica.jsx";
@@ -101,18 +104,79 @@ function Home() {
 
   return (
     <>
-      <header className="site-nav">
-        <div className="wrap">
-          <div className="logo"></div>
-          <nav className="links">
-            <a href="#work1">Work</a>
-            <a id="aboutpagelink" href="#about">
-              About
+      <header className="flex justify-center py-10">
+        <Dock>
+          <DockIcon className="group relative">
+            <a
+              href="#work1"
+              aria-label="Work"
+              className="flex h-full w-full items-center justify-center text-ink-soft transition-colors hover:text-ink"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-full w-full"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+              <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-bg opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+                Work
+              </span>
             </a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <div></div>
-        </div>
+          </DockIcon>
+          <DockIcon className="group relative">
+            <a
+              id="aboutpagelink"
+              href="#about"
+              aria-label="About"
+              className="flex h-full w-full items-center justify-center text-ink-soft transition-colors hover:text-ink"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-full w-full"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+              </svg>
+              <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-bg opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+                About
+              </span>
+            </a>
+          </DockIcon>
+          <DockIcon className="group relative">
+            <a
+              href="#contact2"
+              aria-label="Contact"
+              className="flex h-full w-full items-center justify-center text-ink-soft transition-colors hover:text-ink"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-full w-full"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 6-10 7L2 6" />
+              </svg>
+              <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs font-medium text-bg opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+                Contact
+              </span>
+            </a>
+          </DockIcon>
+        </Dock>
       </header>
 
       {/* <Cover /> */}
@@ -141,7 +205,7 @@ function Home() {
               that users love and teams trust. I design with a systems mindset
               simplifying complex workflows, elevating visual clarity, and
               shaping products that scale with intention. Currently at Superops,
-              designing AI native ticketing platform. Previously at Zoho.
+              designing AI native ticketing platform. Previously at Zoho .
             </p>
           </div>
 
@@ -329,14 +393,20 @@ function Home() {
               {/* <p className="eyebrow">About</p> */}
               <h3>The story so far</h3>
             </div>
-            <p>
-              Started out untangling complex ETL workflows and SQL editors at
-              Zoho , learning that good design is really about making hard
-              things feel obvious. That systems thinking followed me to
-              SuperOps, where I've spent the last two years building an
-              AI-native ticketing platform from scratch. Somewhere between
-              shipping Runbooks and chasing state sync bugs, I found the kind of
-              work I actually want to keep doing.{" "}
+            <p className="lede">
+              Started out untangling complex{" "}
+              <Highlighter action="underline" color="var(--accent)">
+                ETL workflows and SQL editor at Zoho
+              </Highlighter>
+              , learning that good design is really about making hard things
+              feel obvious. That systems thinking followed me to SuperOps, where
+              I've spent the last two years building an{" "}
+              <Highlighter action="highlight" color="var(--accent-soft-border)">
+                AI-native ticketing platform
+              </Highlighter>{" "}
+              from scratch. Somewhere between shipping Runbooks and chasing
+              state sync bugs, I found the kind of work I actually want to keep
+              doing.{" "}
             </p>
           </div>
 
@@ -385,7 +455,11 @@ function Home() {
           {/* SOCIALS CARD — EDIT: your real profile links.
               Sized at span-2r so the last link keeps its bottom padding;
               it has enough headroom for a 3rd link without growing further. */}
-          <div ref={registerCard} className="card card--socials span-2r">
+          <div
+            id="contact2"
+            ref={registerCard}
+            className="card card--socials span-2r"
+          >
             <p className="eyebrow">Find me</p>
             <div className="social-list">
               {/* <a
