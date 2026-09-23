@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import CursorTrail from "./components/CursorTrail.jsx";
 import FooterPhysics from "./components/FooterPhysics.jsx";
@@ -6,6 +6,8 @@ import Cover from "./components/Cover.jsx";
 import Dock from "./components/Dock.jsx";
 import DockIcon from "./components/DockIcon.jsx";
 import { Highlighter } from "@/components/ui/highlighter";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import profilePic from "./components/assets/myprofilepic.jpeg";
 import CaseStudyRunbooks from "./work/runbooks/CaseStudyRunbooks.jsx";
 import CaseStudyMonica from "./work/monica/CaseStudyMonica.jsx";
@@ -58,9 +60,32 @@ const FOOTER_LOGOS = [
   at the top of src/index.css.
 */
 
+const GRID_CELL_SIZE = 40;
+
 export default function App() {
+  const [gridSquares, setGridSquares] = useState([32, 20]);
+
+  useEffect(() => {
+    const updateGridSquares = () => {
+      setGridSquares([
+        Math.ceil(window.innerWidth / GRID_CELL_SIZE),
+        Math.ceil(window.innerHeight / GRID_CELL_SIZE),
+      ]);
+    };
+
+    updateGridSquares();
+    window.addEventListener("resize", updateGridSquares);
+    return () => window.removeEventListener("resize", updateGridSquares);
+  }, []);
+
   return (
     <>
+      <InteractiveGridPattern
+        width={GRID_CELL_SIZE}
+        height={GRID_CELL_SIZE}
+        squares={gridSquares}
+        className="fixed inset-0 -z-10 h-screen w-screen border-none"
+      />
       <CursorTrail />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -417,20 +442,12 @@ function Home() {
             className="card card--contact span-1c span-1r"
           >
             <h3>Let's work together</h3>
-            <a className="btn" href="mailto:arvindhcm7@gmail.com">
+            <InteractiveHoverButton
+              href="mailto:arvindhcm7@gmail.com"
+              className="self-start"
+            >
               Contact
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
+            </InteractiveHoverButton>
           </div>
 
           {/* HOBBIES CARD — EDIT: what you get up to outside of design */}

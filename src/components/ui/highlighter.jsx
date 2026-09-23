@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
-import { annotate } from 'rough-notation';
+import { useLayoutEffect, useRef } from "react";
+import { useInView } from "framer-motion";
+import { annotate } from "rough-notation";
 
 export function Highlighter({
   children,
-  action = 'highlight',
-  color = '#ffd1dc',
+  action = "highlight",
+  color = "#ffd1dc",
   strokeWidth = 1.5,
   animationDuration = 600,
   iterations = 2,
@@ -14,44 +14,51 @@ export function Highlighter({
   isView = false,
 }) {
   const elementRef = useRef(null);
+
   const isInView = useInView(elementRef, {
     once: true,
-    margin: '-10%',
+    margin: "-10%",
   });
 
-  const shouldShow = isView ? isInView : true;
+  const shouldShow = !isView || isInView;
 
-  useEffect(() => {
-    if (!shouldShow) return;
-
+  useLayoutEffect(() => {
     const element = elementRef.current;
-    if (!element) return;
+    let annotation = null;
+    let resizeObserver = null;
 
-    const annotation = annotate(element, {
-      type: action,
-      color,
-      strokeWidth,
-      animationDuration,
-      iterations,
-      padding,
-      multiline,
-    });
+    if (shouldShow && element) {
+      const annotationConfig = {
+        type: action,
+        color,
+        strokeWidth,
+        animationDuration,
+        iterations,
+        padding,
+        multiline,
+      };
 
-    annotation.show();
+      const currentAnnotation = annotate(element, annotationConfig);
+      annotation = currentAnnotation;
+      currentAnnotation.show();
 
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide();
-      annotation.show();
-    });
+      resizeObserver = new ResizeObserver(() => {
+        currentAnnotation.hide();
+        currentAnnotation.show();
+      });
 
-    resizeObserver.observe(element);
-    resizeObserver.observe(document.body);
+      resizeObserver.observe(element);
+      resizeObserver.observe(document.body);
+    }
 
     return () => {
-      resizeObserver.disconnect();
-      annotation.remove();
+      annotation?.remove();
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
     };
   }, [
+    shouldShow,
     action,
     color,
     strokeWidth,
@@ -59,7 +66,6 @@ export function Highlighter({
     iterations,
     padding,
     multiline,
-    shouldShow,
   ]);
 
   return (
