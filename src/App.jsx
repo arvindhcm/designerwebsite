@@ -8,6 +8,7 @@ import DockIcon from "./components/DockIcon.jsx";
 import { Highlighter } from "@/components/ui/highlighter";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import profilePic from "./components/assets/myprofilepic.jpeg";
 import CaseStudyRunbooks from "./work/runbooks/CaseStudyRunbooks.jsx";
 import CaseStudyMonica from "./work/monica/CaseStudyMonica.jsx";
@@ -84,14 +85,16 @@ export default function App() {
         width={GRID_CELL_SIZE}
         height={GRID_CELL_SIZE}
         squares={gridSquares}
-        className="fixed inset-0 -z-10 h-screen w-screen border-none"
+        className="pointer-events-auto fixed inset-0 z-0 h-screen w-screen border-none"
       />
-      <CursorTrail />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/work/unified-runbooks" element={<CaseStudyRunbooks />} />
-        <Route path="/work/monica-ai" element={<CaseStudyMonica />} />
-      </Routes>
+      <div className="relative z-10 pointer-events-none">
+        <CursorTrail />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work/unified-runbooks" element={<CaseStudyRunbooks />} />
+          <Route path="/work/monica-ai" element={<CaseStudyMonica />} />
+        </Routes>
+      </div>
     </>
   );
 }
@@ -129,7 +132,7 @@ function Home() {
 
   return (
     <>
-      <header className="flex justify-center py-10">
+      <header className="pointer-events-auto flex justify-center py-10">
         <Dock>
           <DockIcon className="group relative">
             <a
@@ -207,9 +210,9 @@ function Home() {
       {/* <Cover /> */}
 
       <main className="wrap">
-        <div className="bento">
+        <BentoGrid>
           {/* PROFILE CARD — EDIT: your name, role, initials */}
-          <div
+          <BentoCard
             ref={registerCard}
             className="card card--profile span-2c span-2r"
           >
@@ -232,7 +235,7 @@ function Home() {
               shaping products that scale with intention. Currently at Superops,
               designing AI native ticketing platform. Previously at Zoho .
             </p>
-          </div>
+          </BentoCard>
 
           {/* HEADLINE CARD — EDIT: your one-line positioning statement */}
           {/* <div
@@ -251,7 +254,7 @@ function Home() {
           </div> */}
 
           {/* STATUS CARD — EDIT: toggle wording / remove if unavailable */}
-          <div
+          <BentoCard
             ref={registerCard}
             className="card card--experience span-2c span-1r"
           >
@@ -279,10 +282,10 @@ function Home() {
               </div>
               <div className="exp-years">2023 – Present</div>
             </div>
-          </div>
+          </BentoCard>
 
           {/* TOOLS CARD — EDIT: swap tags for your actual stack */}
-          <div ref={registerCard} className="card card--tools span-1c span-2r">
+          <BentoCard ref={registerCard} className="card card--tools span-1c span-2r">
             <p className="eyebrow">Tools</p>
             <h3>What I work with</h3>
             <p className="lede">Design, code, and everything in between</p>
@@ -296,10 +299,10 @@ function Home() {
               <span className="tag">Claude Design</span>
               <span className="tag">Claude Code</span>
             </div>
-          </div>
+          </BentoCard>
 
           {/* META CARD — EDIT: experience, focus, location */}
-          <div ref={registerCard} className="card card--meta span-1c span-1r">
+          <BentoCard ref={registerCard} className="card card--meta span-1c span-1r">
             {/* <p className="eyebrow">Experience</p> */}
             <div className="meta-row">
               <div>
@@ -320,13 +323,13 @@ function Home() {
               </div>
               <div className="label">India</div>
             </div>
-          </div>
+          </BentoCard>
 
           {/* WORK — main piece. EDIT: replace gradient block with a real screenshot,
               update tag/title/description. To use an image instead of the gradient,
               swap the inline background-image style below for your asset. */}
 
-          <div
+          <BentoCard
             id="work1"
             ref={registerCard}
             className="card card--work work-mint work-featured span-4c span-2r card--clickable"
@@ -365,10 +368,10 @@ function Home() {
               alt="Close-up of the runbook canvas with checklist and script nodes"
               loading="lazy"
             /> */}
-          </div>
+          </BentoCard>
 
           {/* WORK — secondary piece. EDIT as above. */}
-          <div
+          <BentoCard
             id="work2"
             ref={registerCard}
             className="card card--work work-sky work-featured span-4c span-2r card--clickable"
@@ -406,10 +409,10 @@ function Home() {
               alt="Monica AI product walkthrough inside the SuperOps console"
               loading="lazy"
             /> */}
-          </div>
+          </BentoCard>
 
           {/* ABOUT CARD — EDIT: your story */}
-          <div
+          <BentoCard
             id="about"
             ref={registerCard}
             className="card card--about span-3c span-2r flex justify-between"
@@ -433,10 +436,10 @@ function Home() {
               state sync bugs, I found the kind of work I actually want to keep
               doing.{" "}
             </p>
-          </div>
+          </BentoCard>
 
           {/* CONTACT CARD — EDIT: email address / CTA copy */}
-          <div
+          <BentoCard
             id="contact"
             ref={registerCard}
             className="card card--contact span-1c span-1r"
@@ -448,10 +451,10 @@ function Home() {
             >
               Contact
             </InteractiveHoverButton>
-          </div>
+          </BentoCard>
 
           {/* HOBBIES CARD — EDIT: what you get up to outside of design */}
-          <div
+          <BentoCard
             ref={registerCard}
             className="card card--hobbies span-1c span-1r"
           >
@@ -467,12 +470,12 @@ function Home() {
                 <span aria-hidden="true">🏔️</span> Mountain drives
               </span>
             </div>
-          </div>
+          </BentoCard>
 
           {/* SOCIALS CARD — EDIT: your real profile links.
               Sized at span-2r so the last link keeps its bottom padding;
               it has enough headroom for a 3rd link without growing further. */}
-          <div
+          <BentoCard
             id="contact2"
             ref={registerCard}
             className="card card--socials span-2r"
@@ -509,11 +512,11 @@ function Home() {
                 📧 arvindhcm7@gmail <span className="arrow">→</span>
               </a>
             </div>
-          </div>
-        </div>
+          </BentoCard>
+        </BentoGrid>
       </main>
 
-      <footer className="site-footer">
+      <footer className="pointer-events-auto site-footer">
         <FooterPhysics logos={FOOTER_LOGOS} />
         {/* <div className="wrap site-footer-line">
           <span>© {year} · Built by hand</span>

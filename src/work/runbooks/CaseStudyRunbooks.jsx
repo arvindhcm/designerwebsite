@@ -79,7 +79,7 @@ export default function CaseStudyRunbooks() {
 
   return (
     <div
-      className="case-study"
+      className="pointer-events-auto case-study"
       role="dialog"
       aria-modal="true"
       aria-label="Unified Runbooks case study"

@@ -32,6 +32,7 @@ nav.links a:hover { @apply text-ink; }
 }
 
 /* ---------- Bento grid ----------
+   Grid container lives in components/ui/bento-grid.jsx (BentoGrid).
    Each row is 160px tall. Every card is given a column span
    (span-1c…span-4c) and a row span (span-1r / span-2r) below —
    e.g. a card with span-2r is ~336px tall (2 rows + the gap).
@@ -39,10 +40,6 @@ nav.links a:hover { @apply text-ink; }
    button/last line, bump its row span up by one rather than
    shrinking the font. */
 main { @apply pt-7 pb-[90px]; }
-
-.bento {
-  @apply mt-[18px] grid grid-cols-4 auto-rows-[160px] grid-flow-row-dense gap-4;
-}
 
 .card {
   @apply relative flex flex-col rounded-lg border border-border bg-surface p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-200 ease-[ease];
@@ -253,14 +250,13 @@ footer .wrap a:hover { @apply text-ink; }
   footer .wrap { @apply flex-col gap-2.5 text-center; }
 }
 
-/* ---------- Responsive grid ---------- */
+/* ---------- Responsive grid ----------
+   Grid-cols breakpoints live in components/ui/bento-grid.jsx (BentoGrid). */
 @media (max-width: 860px) {
-  .bento { @apply grid-cols-2; }
   .span-3c { @apply col-span-2; }
   .span-4c { @apply col-span-2; }
 }
 @media (max-width: 560px) {
-  .bento { @apply grid-cols-1 auto-rows-auto; }
   .card { @apply !col-span-1 !row-span-1 min-h-[160px]; }
   .site-nav { @apply pt-5; }
 }

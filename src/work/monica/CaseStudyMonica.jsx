@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ImageLightbox from "../../components/ImageLightbox";
+import { NoiseTexture } from "../../components/ui/noise-texture";
 
 // import heroPoster from "./assets/videoThumbnail.webp";
 import scriptgen from "./assets/scriptgen.png";
@@ -99,12 +100,14 @@ export default function CaseStudyMonica() {
 
   return (
     <div
-      className="fixed inset-0 z-[1000] flex flex-col bg-bg"
+      className="pointer-events-auto fixed inset-0 z-[1000] flex flex-col bg-bg"
       role="dialog"
       aria-modal="true"
       aria-label="Monica AI case study"
     >
-      <div className="flex-1 overflow-y-auto [-webkit-overflow-scrolling:touch]">
+      <NoiseTexture noiseOpacity={0.2} />
+
+      <div className="relative z-10 flex-1 overflow-y-auto [-webkit-overflow-scrolling:touch]">
         {/* TOPBAR */}
         <div className="liquid-glass sticky top-0 z-10 flex-shrink-0 border-b border-border">
           <div className="wrap flex items-center justify-between">

@@ -55,6 +55,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
+  pointer-events: none;
 }
 
 a { color: inherit; text-decoration: none; }
