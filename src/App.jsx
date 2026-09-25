@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import CursorTrail from "./components/CursorTrail.jsx";
 import FooterPhysics from "./components/FooterPhysics.jsx";
+import PageLoader from "./components/PageLoader.jsx";
 import Cover from "./components/Cover.jsx";
 import Dock from "./components/Dock.jsx";
 import DockIcon from "./components/DockIcon.jsx";
@@ -19,7 +20,7 @@ import canvasWide from "./work/runbooks/assets/canvasWide.png";
 import similarTicket from "./work/monica/assets/similarticket.mp4";
 
 import linkedinIcon from "./assets/linkedin.svg";
-import zohoLogo from "./assets/zoho.svg";
+import zohoLogo from "./assets/zoho-seeklogo.svg";
 import superopsLogo from "./assets/SuperOps.svg";
 import figmaLogo from "./assets/tools/figma.svg";
 import framerLogo from "./assets/tools/framer.svg";
@@ -39,7 +40,7 @@ import githubLogo from "./assets/tools/github.svg";
 // settles, and scatters when you hover near it in the footer.
 const FOOTER_LOGOS = [
   { url: figmaLogo, shape: "circle", size: 48, count: 2 },
-  { url: framerLogo, shape: "square", size: 44, count: 2 },
+  // { url: framerLogo, shape: "square", size: 44, count: 2 },
   { url: reactLogo, shape: "circle", size: 46, count: 2 },
   { url: webflowLogo, shape: "square", size: 44, count: 2 },
   { url: notionLogo, shape: "circle", size: 44, count: 2 },
@@ -81,6 +82,7 @@ export default function App() {
 
   return (
     <>
+      <PageLoader />
       <InteractiveGridPattern
         width={GRID_CELL_SIZE}
         height={GRID_CELL_SIZE}
@@ -91,7 +93,10 @@ export default function App() {
         <CursorTrail />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/work/unified-runbooks" element={<CaseStudyRunbooks />} />
+          <Route
+            path="/work/unified-runbooks"
+            element={<CaseStudyRunbooks />}
+          />
           <Route path="/work/monica-ai" element={<CaseStudyMonica />} />
         </Routes>
       </div>
@@ -132,7 +137,7 @@ function Home() {
 
   return (
     <>
-      <header className="pointer-events-auto flex justify-center py-10">
+      <header className="pointer-events-auto flex justify-center pt-10">
         <Dock>
           <DockIcon className="group relative">
             <a
@@ -230,10 +235,11 @@ function Home() {
 
             <p className="lede">
               I’m a product designer who loves crafting calm, clear experiences
-              that users love and teams trust. I design with a systems mindset
-              simplifying complex workflows, elevating visual clarity, and
-              shaping products that scale with intention. Currently at Superops,
-              designing AI native ticketing platform. Previously at Zoho .
+              . I design with a systems mindset simplifying complex workflows,
+              elevating visual clarity, and shaping products that scale with
+              intention.
+              {/* Currently at Superops, designing AI native ticketing */}
+              {/* platform. Previously at Zoho . */}
             </p>
           </BentoCard>
 
@@ -262,7 +268,7 @@ function Home() {
             <div className="exp-row">
               <div className="exp-brand">
                 <img
-                  style={{ height: "30px" }}
+                  style={{ height: "25px" }}
                   src={zohoLogo}
                   alt="Zoho Corp"
                   className="exp-logo-img"
@@ -274,6 +280,7 @@ function Home() {
             <div className="exp-row">
               <div className="exp-brand">
                 <img
+                  style={{ height: "25px" }}
                   src={superopsLogo}
                   alt="SuperOps"
                   className="exp-logo-img"
@@ -285,7 +292,10 @@ function Home() {
           </BentoCard>
 
           {/* TOOLS CARD — EDIT: swap tags for your actual stack */}
-          <BentoCard ref={registerCard} className="card card--tools span-1c span-2r">
+          <BentoCard
+            ref={registerCard}
+            className="card card--tools span-1c span-2r"
+          >
             <p className="eyebrow">Tools</p>
             <h3>What I work with</h3>
             <p className="lede">Design, code, and everything in between</p>
@@ -302,7 +312,10 @@ function Home() {
           </BentoCard>
 
           {/* META CARD — EDIT: experience, focus, location */}
-          <BentoCard ref={registerCard} className="card card--meta span-1c span-1r">
+          <BentoCard
+            ref={registerCard}
+            className="card card--meta span-1c span-1r"
+          >
             {/* <p className="eyebrow">Experience</p> */}
             <div className="meta-row">
               <div>
